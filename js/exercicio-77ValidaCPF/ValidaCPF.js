@@ -24,11 +24,11 @@ function ValidaCPF(cpfEnviado) {
 }
 
 ValidaCPF.prototype.valida = function() {
-  if(typeof this.cpfLimpo === 'undefined') return false;
-  if(this.cpfLimpo.length !== 11) return false;
-  if(this.isSequencia()) return false;
+  if(typeof this.cpfLimpo === 'undefined') return false; // se eu nao envia nada  
+  if(this.cpfLimpo.length !== 11) return false; // se o tamanho for diferente e 11 tant5p pra mais quanto paraa menos 
+  if(this.isSequencia()) return false; // so vai conferir e ver se os CPF tem seguencia parecida 
 
-  const cpfParcial = this.cpfLimpo.slice(0, -2);
+  const cpfParcial = this.cpfLimpo.slice(0, -2); // vai so ver tamanho do CPF e tira 2 de 11 
   const digito1 = this.criaDigito(cpfParcial);
   const digito2 = this.criaDigito(cpfParcial + digito1);
 
@@ -37,20 +37,20 @@ ValidaCPF.prototype.valida = function() {
 };
 
 ValidaCPF.prototype.criaDigito = function(cpfParcial) {
-  const cpfArray = Array.from(cpfParcial);
+  const cpfArray = Array.from(cpfParcial); // vai deixa todos os numeros em uma array
 
-  let regressivo = cpfArray.length + 1;
-  const total = cpfArray.reduce((ac, val) => {
+  let regressivo = cpfArray.length + 1; // de 9 vai paraa 10 
+  const total = cpfArray.reduce((ac, val) => {  
     ac += (regressivo * Number(val));
     regressivo--;
     return ac;
-  }, 0);
+  }, 0); //vai fazer as conta meio quer de tras para frente 
 
   const digito = 11 - (total % 11);
   return digito > 9 ? '0' : String(digito);
 };
 
-ValidaCPF.prototype.isSequencia = function() {
+ValidaCPF.prototype.isSequencia = function() {   // vai comparar para ver se os usuario digito um CPF com todos os digitos iguais 
   const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length);
   return sequencia === this.cpfLimpo;
 };
