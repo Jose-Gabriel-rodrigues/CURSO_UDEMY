@@ -38,7 +38,7 @@ class UserController {
   // Update
   async update(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      const user = await User.findByPk(req.params.id);
 
       if (!user) {
         return res.status(400).json({
@@ -59,7 +59,7 @@ class UserController {
   // Delete
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      const user = await User.findByPk(req.params.id);
 
       if (!user) {
         return res.status(400).json({
@@ -68,7 +68,7 @@ class UserController {
       }
 
       await user.destroy();
-      return res.json(null);
+      return res.json(user);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
