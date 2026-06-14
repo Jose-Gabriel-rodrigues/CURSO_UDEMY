@@ -18,6 +18,7 @@ export default defineConfig([
       'import/first': 'off',
       'no-param-reassign': 'off',
       'no-shadow': 'off',
+      "javascript.suggestionActions.enabled": false
     },
   },
 ]);
