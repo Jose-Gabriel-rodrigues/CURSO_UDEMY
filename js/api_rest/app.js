@@ -10,7 +10,7 @@ import express from 'express';
 
 import homeRoutes from './src/routes/homeRoutes';
 import userRoutes from './src/routes/userRoutes';
-// import tokenRoutes from './routes/tokenRoutes';
+import tokenRoutes from './src/routes/tokenRoutes';
 // import alunoRoutes from './routes/alunoRoutes';
 // import fotoRoutes from './routes/fotoRoutes';
 
@@ -48,7 +48,7 @@ class App {
   routes() {
     this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
-    // this.app.use('/tokens/', tokenRoutes);
+    this.app.use('/tokens/', tokenRoutes);
     // this.app.use('/alunos/', alunoRoutes);
     // this.app.use('/fotos/', fotoRoutes);
   }
