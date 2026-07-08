@@ -1,5 +1,7 @@
-import React from 'react';
-import './App.css';
-export default function App(){
-  return <h1>Hello world ! </h1>;
-  }
+import React from "react";
+import Main from "./component/main";
+import "./App.css";
+
+export default function App() {
+    return <Main />;
+}
