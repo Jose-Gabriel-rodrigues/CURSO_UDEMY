@@ -23,6 +23,7 @@ module.exports = {
         "react/state-in-constructor": "off",
         "class-methods-use-this": "off",
         "react/no-unused-state": "off",
+        "react/forbid-prop-types": 0,
     },
     settings: {
         react: {
